@@ -12,6 +12,6 @@ namespace DevPartnersRainfall.Services
         /// </summary>
         /// <param name="request">rainfall request params</param>
         /// <returns>List of Rainfall reading data</returns>
-        List<RainItemModel> GetRainfallById(RequestModel request);
+        List<RainfallReadingModel> GetRainfallById(RequestModel request);
     }
 }

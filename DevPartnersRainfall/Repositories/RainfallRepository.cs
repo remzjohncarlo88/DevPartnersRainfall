@@ -14,18 +14,18 @@ namespace DevPartnersRainfall.Repositories
         /// </summary>
         /// <param name="request">rainfall request arguments</param>
         /// <returns>List of rainfall readings</returns>
-        public async Task<IEnumerable<RainItemModel>> GetRainfallById(RequestModel request)
+        public async Task<IEnumerable<RainfallReadingModel>> GetRainfallById(RequestModel request)
         {
-            RainModel rainfallList = new RainModel();
+            RainfallReadingResponseModel rainfallList = new RainfallReadingResponseModel();
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(string.Concat("http://environment.data.gov.uk/flood-monitoring/id/stations/", request.stationId, "/readings?_sorted&_limit=", request.count)))
+                using (var response = await httpClient.GetAsync(string.Concat("http://environment.data.gov.uk/flood-monitoring/id/stations/", request.StationId, "/readings?_sorted&_limit=", request.Count)))
                 {
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
-                        rainfallList = JsonConvert.DeserializeObject<RainModel>(apiResponse);
+                        rainfallList = JsonConvert.DeserializeObject<RainfallReadingResponseModel>(apiResponse);
                     }
                 }
             }

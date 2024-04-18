@@ -5,32 +5,25 @@ namespace DevPartnersRainfall.Models
     /// <summary>
     /// Rain Item Model class
     /// </summary>
-    [DataContract]
-    public class RainItemModel
+    [DataContract(Name = "RainfallReading")]
+    public class RainfallReadingModel
     {
-        /// <summary>
-        /// Id
-        /// </summary>
-        [DataMember(Name = "@id")]
-        public string? Id { get; set; }
+        
         DateTime _date;
         /// <summary>
         /// Date
         /// </summary>
         [DataMember(Name = "dateTime")]
-        public DateTime Date {
+        public DateTime DateMeasured
+        {
             get { return _date; }
             set { _date = Convert.ToDateTime(value); }
         }
-        /// <summary>
-        /// Measurement
-        /// </summary>
-        [DataMember(Name = "measure")]
-        public string? Measure { get; set; }
+
         /// <summary>
         /// Value
         /// </summary>
         [DataMember(Name = "value")]
-        public decimal Value { get; set; }
+        public decimal AmountMeasured { get; set; }
     }
 }

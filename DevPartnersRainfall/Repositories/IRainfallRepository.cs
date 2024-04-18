@@ -13,6 +13,6 @@ namespace DevPartnersRainfall.Repositories
         /// </summary>
         /// <param name="request">rainfall request arguments</param>
         /// <returns>List of rainfall readings</returns>
-        Task<IEnumerable<RainItemModel>> GetRainfallById(RequestModel request);
+        Task<IEnumerable<RainfallReadingModel>> GetRainfallById(RequestModel request);
     }
 }

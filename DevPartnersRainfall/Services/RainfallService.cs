@@ -24,9 +24,9 @@ namespace DevPartnersRainfall.Services
         /// </summary>
         /// <param name="request">rainfall request params</param>
         /// <returns>List of Rainfall reading data</returns>
-        public List<RainItemModel> GetRainfallById(RequestModel request)
+        public List<RainfallReadingModel> GetRainfallById(RequestModel request)
         {
-            List<RainItemModel> rainItems = _rainfallRepo.GetRainfallById(request).Result.ToList();
+            List<RainfallReadingModel> rainItems = _rainfallRepo.GetRainfallById(request).Result.ToList();
 
             return rainItems;
         }

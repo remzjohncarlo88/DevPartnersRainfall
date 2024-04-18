@@ -7,7 +7,7 @@ namespace DevPartnersRainfall.Models
     /// <summary>
     /// Request Model class
     /// </summary>
-    [DataContract]
+    [DataContract(Name = "Request")]
     public class RequestModel
     {
         /// <summary>
@@ -15,7 +15,7 @@ namespace DevPartnersRainfall.Models
         /// </summary>
         [Description("The id of the reading station")]
         [Required]
-        public string? stationId { get; set; }
+        public string? StationId { get; set; }
         /// <summary>
         /// Display Count
         /// </summary>
@@ -23,6 +23,6 @@ namespace DevPartnersRainfall.Models
         [MinLength(1)]
         [MaxLength(100)]
         [DefaultValue(10)]
-        public string? count { get; set; }
+        public string? Count { get; set; }
     }
 }
