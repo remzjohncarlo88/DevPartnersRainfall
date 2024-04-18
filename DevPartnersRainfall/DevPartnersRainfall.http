@@ -1,0 +1,6 @@
+@DevPartnersRainfall_HostAddress = http://localhost:5003
+
+GET {{DevPartnersRainfall_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
