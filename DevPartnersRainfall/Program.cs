@@ -1,3 +1,5 @@
+using DevPartnersRainfall.Repositories;
+using DevPartnersRainfall.Services;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -21,10 +23,14 @@ builder.Services.AddSwaggerGen( options =>
             Url = new Uri("https://www.sorted.com")
         }
     });
+    options.EnableAnnotations();
 
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+
+builder.Services.AddScoped<IRainfallRepository, RainfallRepository>();
+builder.Services.AddScoped<IRainfallService, RainfallService>();
 
 var app = builder.Build();
 
