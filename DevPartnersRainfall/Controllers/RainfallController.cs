@@ -26,9 +26,8 @@ namespace DevPartnersRainfall.Controllers
         /// <summary>
         /// Gets the list of UK's rainfall readings
         /// </summary>
-        /// <param name="id">Station ID</param>
-        /// <param name="limit">Filter Items by INT Limit</param>
-        /// <returns></returns>
+        /// <param name="request">request containing station ID and limit filter number</param>
+        /// <returns>List of rainfall readings</returns>
         [HttpGet(Name = "GetRainfallReadingsById")]
         [Produces("application/json")]
         [SwaggerOperation(Summary = "Get the Rainfall reading data by station id.")]
@@ -36,14 +35,8 @@ namespace DevPartnersRainfall.Controllers
         [SwaggerResponse(400, "Invalid request")]
         [SwaggerResponse(404, "No readings found for the specified stationId")]
         [SwaggerResponse(500, "Internal Server Error")]
-        public IActionResult GetRainfallReadingsById(string id, int limit)
+        public IActionResult GetRainfallReadingsById([FromQuery] RequestModel request)
         {
-            RequestModel request = new RequestModel
-            {
-                Id = id,
-                Limit = limit
-            };
-
             var rainfallList = _rainfallService.GetRainfallById(request);
 
             if (rainfallList.Equals(null))

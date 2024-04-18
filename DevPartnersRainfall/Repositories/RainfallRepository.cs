@@ -20,7 +20,7 @@ namespace DevPartnersRainfall.Repositories
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(string.Concat("http://environment.data.gov.uk/flood-monitoring/id/stations/", request.Id, "/readings?_sorted&_limit=", request.Limit)))
+                using (var response = await httpClient.GetAsync(string.Concat("http://environment.data.gov.uk/flood-monitoring/id/stations/", request.stationId, "/readings?_sorted&_limit=", request.count)))
                 {
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
