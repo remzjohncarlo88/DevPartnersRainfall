@@ -16,6 +16,6 @@
         /// <summary>
         /// List of errors
         /// </summary>
-        public List<ErrorDetailModel>? Items { get; set; }
+        public List<ErrorDetailModel> Items { get; set; }
     }
 }

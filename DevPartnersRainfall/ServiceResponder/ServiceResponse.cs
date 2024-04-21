@@ -27,10 +27,6 @@ namespace DevPartnersRainfall.ServiceResponder
         /// <summary>
         /// Error trace
         /// </summary>
-        public List<string> ErrorMessages { get; set; } = null;
-        /// <summary>
-        /// Error trace
-        /// </summary>
         public ErrorModel ErrMessages { get; set; } = null;
     }
 }

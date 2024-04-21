@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using DevPartnersRainfall.Models;
 using DevPartnersRainfall.Services;
 using Swashbuckle.AspNetCore.Annotations;
+using Newtonsoft.Json.Linq;
+using DevPartnersRainfall.DTO;
+using DevPartnersRainfall.ServiceResponder;
+using System.Collections.Generic;
 
 namespace DevPartnersRainfall.Controllers
 {
@@ -37,21 +41,35 @@ namespace DevPartnersRainfall.Controllers
         [SwaggerResponse(500, "Internal Server Error", typeof(ErrorModel))]
         public IActionResult GetRainfallReadingsById([FromQuery] RequestModel request)
         {
-            // 404
-            //if (request == Guid.Empty)
-            //{
-            //    return BadRequest(request);
-            //}
-
-            var rainfallList = _rainfallService.GetRainfallById(request);
-
+            ServiceResponse<List<RainfallReadingDto>> rain;
+                     
             // 400
-            if (rainfallList.Data == null)
+            if (request.Count < 1 || request.Count > 100 || string.IsNullOrEmpty(request.StationId))
             {
-                return NotFound();
+                ErrorModel err = new();
+                List<ErrorDetailModel> errList = new();
+
+                err.Message = "The request is malformed.";
+                errList.Add(new ErrorDetailModel("Count", "Value not allowed."));
+                err.Items = errList;
+                return BadRequest(err);
             }
 
-            return Ok(rainfallList);
+            rain = _rainfallService.GetRainfallById(request);
+
+            // 404
+            if (!rain.Success & rain.Data == null)
+            {
+                return NotFound(rain.ErrMessages);
+            }
+
+            // 500
+            if (!rain.Success & rain.Message.Equals("Error"))
+            {
+                return StatusCode(500, rain.ErrMessages);
+            }
+
+            return Ok(rain);
         }
     }
 }

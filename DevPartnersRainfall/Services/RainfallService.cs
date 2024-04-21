@@ -38,10 +38,13 @@ namespace DevPartnersRainfall.Services
             {
                 var _items = _rainfallRepo.GetRainfallById(request).Result.ToList();
 
-                if (_items == null)
+                if (_items.Count == 0)
                 {
+                    ErrorModel err = new();
+                    err.Message = "Not Found.";
+
                     _response.Success = false;
-                    _response.Message = "NotFound";
+                    _response.ErrMessages = err;
                     return _response;
                 }
 
@@ -53,15 +56,17 @@ namespace DevPartnersRainfall.Services
                 }
 
                 _response.Success = true;
-                _response.Message = "ok";
                 _response.Data = _rainfallReadingDto;
             }
             catch (Exception ex)
             {
+                ErrorModel err = new();
+                err.Message = Convert.ToString(ex.Message);
+
                 _response.Success = false;
                 _response.Data = null;
-                _response.Message = "Error";
-                _response.ErrorMessages = new List<string> { Convert.ToString(ex.Message) };
+                _response.Message = "Error";                
+                _response.ErrMessages = err;
             }
 
             return _response;
