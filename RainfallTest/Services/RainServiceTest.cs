@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using DevPartnersRainfall.Models;
 using DevPartnersRainfall.Services;
+using Newtonsoft.Json;
 
 namespace RainfallTest.Services
 {
@@ -13,6 +15,9 @@ namespace RainfallTest.Services
         private readonly List<RainfallReadingModel> _rainItems;
         public RainServiceTest()
         {
+
+            // call the repository
+
             _rainItems = new List<RainfallReadingModel>()
             {
                 new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T12:00:00Z"),

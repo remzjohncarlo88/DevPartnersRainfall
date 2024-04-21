@@ -31,7 +31,7 @@ namespace RainfallTest.Controllers
         {
             RequestModel request = new RequestModel();
             request.StationId = "3680";
-            request.Count = "11";
+            request.Count = 11;
             // Act
             var items = _controller.GetRainfallReadingsById(request) as OkObjectResult;
             // Assert

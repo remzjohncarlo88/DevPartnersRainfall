@@ -1,12 +1,12 @@
-﻿using System.Runtime.Serialization;
+﻿using DevPartnersRainfall.Models;
+using System.Runtime.Serialization;
 
-namespace DevPartnersRainfall.Models
+namespace DevPartnersRainfall.DTO
 {
     /// <summary>
-    /// Rainfall Model class
+    /// Rainfall Reading Response DTO
     /// </summary>
-    [DataContract(Name = "RainfallReadingResponse")]
-    public class RainfallReadingResponseModel
+    public class RainfallReadingResponseDto
     {
         /// <summary>
         /// List of rain readings

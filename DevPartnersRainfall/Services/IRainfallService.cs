@@ -1,4 +1,6 @@
-﻿using DevPartnersRainfall.Models;
+﻿using DevPartnersRainfall.DTO;
+using DevPartnersRainfall.Models;
+using DevPartnersRainfall.ServiceResponder;
 
 namespace DevPartnersRainfall.Services
 {
@@ -12,6 +14,6 @@ namespace DevPartnersRainfall.Services
         /// </summary>
         /// <param name="request">rainfall request params</param>
         /// <returns>List of Rainfall reading data</returns>
-        List<RainfallReadingModel> GetRainfallById(RequestModel request);
+        ServiceResponse<List<RainfallReadingDto>> GetRainfallById(RequestModel request);
     }
 }

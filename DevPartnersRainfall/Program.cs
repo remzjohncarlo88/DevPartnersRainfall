@@ -1,9 +1,12 @@
 using DevPartnersRainfall.Repositories;
 using DevPartnersRainfall.Services;
+using DevPartnersRainfall.DTO;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(typeof(DTOMapping));
 
 // Add services to the container.
 

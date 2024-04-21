@@ -16,13 +16,27 @@ namespace DevPartnersRainfall.Models
         [Description("The id of the reading station")]
         [Required]
         public string? StationId { get; set; }
+        private int limit;
         /// <summary>
         /// Display Count
         /// </summary>
         [Description("The number of readings to return")]
-        [MinLength(1)]
-        [MaxLength(100)]
         [DefaultValue(10)]
-        public string? Count { get; set; }
+        public int Count {
+            get
+            {
+                return limit;
+            }
+
+            set
+            {
+                if (value < 1 || value > 100)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Count));
+                }
+
+                limit = value;
+            }
+        }
     }
 }

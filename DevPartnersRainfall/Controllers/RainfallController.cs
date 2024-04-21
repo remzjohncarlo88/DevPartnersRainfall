@@ -31,16 +31,25 @@ namespace DevPartnersRainfall.Controllers
         [HttpGet(Name = "GetRainfallReadingsById")]
         [Produces("application/json")]
         [SwaggerOperation(Summary = "Get the Rainfall reading data by station id.")]
-        [SwaggerResponse(200, "A list of rainfall readings successfully retrieved", typeof(RainfallReadingResponseModel))]        
+        [SwaggerResponse(200, "A list of rainfall readings successfully retrieved", typeof(RainfallReadingResponseModel))]
         [SwaggerResponse(400, "Invalid request", typeof(ErrorModel))]
         [SwaggerResponse(404, "No readings found for the specified stationId", typeof(ErrorModel))]
         [SwaggerResponse(500, "Internal Server Error", typeof(ErrorModel))]
         public IActionResult GetRainfallReadingsById([FromQuery] RequestModel request)
         {
+            // 404
+            //if (request == Guid.Empty)
+            //{
+            //    return BadRequest(request);
+            //}
+
             var rainfallList = _rainfallService.GetRainfallById(request);
 
-            if (rainfallList.Equals(null))
+            // 400
+            if (rainfallList.Data == null)
+            {
                 return NotFound();
+            }
 
             return Ok(rainfallList);
         }
