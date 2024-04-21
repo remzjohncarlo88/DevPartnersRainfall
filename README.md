@@ -11,4 +11,4 @@ For nugget packages, if went missing, please run the commands below.
 
 How to RUN the project.
 Upon rebuilding the entire solution successfully, please run the DevPartnersRainfall by hitting **F5** and test the endpoint from Swagger UI.
-For test project, kindly right click on the test project and hit **Run Tests**.
+For test project, kindly right click on the test method and hit **Run Tests**.
