@@ -14,7 +14,7 @@ namespace DevPartnersRainfall.Repositories
         /// </summary>
         /// <param name="request">rainfall request arguments</param>
         /// <returns>List of rainfall readings</returns>
-        public async Task<IEnumerable<RainfallReadingModel>> GetRainfallById(RequestModel request)
+        public async Task<List<RainfallReadingModel>> GetRainfallById(RequestModel request)
         {
             RainfallReadingResponseModel rainfallList = new RainfallReadingResponseModel();
 

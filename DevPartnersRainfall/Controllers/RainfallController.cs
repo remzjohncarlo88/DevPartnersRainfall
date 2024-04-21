@@ -42,19 +42,31 @@ namespace DevPartnersRainfall.Controllers
         public IActionResult GetRainfallReadingsById([FromQuery] RequestModel request)
         {
             ServiceResponse<List<RainfallReadingDto>> rain;
-                     
+
             // 400
-            if (request.Count < 1 || request.Count > 100 || string.IsNullOrEmpty(request.StationId))
+            if (request.Count == 0)
             {
                 ErrorModel err = new();
                 List<ErrorDetailModel> errList = new();
 
                 err.Message = "The request is malformed.";
-                errList.Add(new ErrorDetailModel("Count", "Value not allowed."));
-                err.Items = errList;
+
+                if (request.Count < 1 || request.Count > 100)
+                {                    
+                    errList.Add(new ErrorDetailModel("Count", "Value not allowed."));
+                    err.Items = errList;                    
+                }
+
+                if (string.IsNullOrEmpty(request.StationId))
+                {
+                    errList.Add(new ErrorDetailModel("StationId", "Station Id is required."));
+                    err.Items = errList;
+
+                }
+
                 return BadRequest(err);
             }
-
+            
             rain = _rainfallService.GetRainfallById(request);
 
             // 404

@@ -56,6 +56,7 @@ namespace DevPartnersRainfall.Services
                 }
 
                 _response.Success = true;
+                _response.Message = "Found.";
                 _response.Data = _rainfallReadingDto;
             }
             catch (Exception ex)
@@ -65,7 +66,7 @@ namespace DevPartnersRainfall.Services
 
                 _response.Success = false;
                 _response.Data = null;
-                _response.Message = "Error";                
+                _response.Message = "Error.";                
                 _response.ErrMessages = err;
             }
 

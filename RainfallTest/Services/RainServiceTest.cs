@@ -1,50 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using DevPartnersRainfall.Controllers;
+using DevPartnersRainfall.DTO;
 using DevPartnersRainfall.Models;
+using DevPartnersRainfall.Repositories;
+using DevPartnersRainfall.ServiceResponder;
 using DevPartnersRainfall.Services;
-using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using RainfallTest.Repositories;
 
 namespace RainfallTest.Services
 {
     public class RainServiceTest : IRainfallService
     {
-        private readonly List<RainfallReadingModel> _rainItems;
-        public RainServiceTest()
+        /// <summary>
+        /// GetMapper
+        /// </summary>
+        /// <returns></returns>
+        public IMapper GetMapper()
         {
-
-            // call the repository
-
-            _rainItems = new List<RainfallReadingModel>()
-            {
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T12:00:00Z"),
-                        AmountMeasured = Convert.ToDecimal(1.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(1.4) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(1.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(4.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(1.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(1.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(6.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(1.8) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(1.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(7.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(9.1) },
-                new RainfallReadingModel() { DateMeasured = Convert.ToDateTime("2024-01-11T11:45:00Z"),
-                        AmountMeasured = Convert.ToDecimal(20.1) }
-            };
+            var mappingProfile = new DTOMapping();
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile(mappingProfile));
+            return new Mapper(configuration);
         }
 
         /// <summary>
@@ -52,9 +29,14 @@ namespace RainfallTest.Services
         /// </summary>
         /// <param name="request">rainfall params</param>
         /// <returns>Rainfall list</returns>
-        public List<RainfallReadingModel> GetRainfallById(RequestModel request)
+        public ServiceResponse<List<RainfallReadingDto>> GetRainfallById(RequestModel request)
         {
-            return _rainItems.Take(Convert.ToInt32(request.Count)).ToList();
+            var repositoryMock = MockIRainfallRepository.GetMockIRainfallRepository(request);
+            var mapper = GetMapper();
+            var ownerController = new RainfallService(repositoryMock.Object, mapper);
+            var result = ownerController.GetRainfallById(request);
+
+            return result;
         }
     }
 }
