@@ -34,10 +34,10 @@ namespace RainfallTest.Controllers
             request.StationId = "3680";
             request.Count = 11;
             // Act
-            var items = _controller.GetRainfallReadingsById(request) as OkObjectResult;
+            var results = _controller.GetRainfallReadingsById(request) as OkObjectResult;
             // Assert
-            var itemsEq = Assert.IsType<ServiceResponse<List<RainfallReadingDto>>>(items.Value);
-            Assert.Equal(11, itemsEq.Data.Count);
+            var itemsEq = Assert.IsType<List<RainfallReadingDto>>(results.Value);
+            Assert.Equal(11, itemsEq.Count);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace RainfallTest.Controllers
             request.StationId = "368054015465606548";
             request.Count = 11;
             // Act
-            var results = _controller.GetRainfallReadingsById(request) as OkObjectResult;
+            var results = _controller.GetRainfallReadingsById(request) as ObjectResult;
             // Assert
             Assert.Equal(StatusCodes.Status404NotFound, results.StatusCode);
         }
@@ -65,7 +65,7 @@ namespace RainfallTest.Controllers
             request.StationId = "";
             request.Count = 11;
             // Act
-            var results = _controller.GetRainfallReadingsById(request) as OkObjectResult;
+            var results = _controller.GetRainfallReadingsById(request) as ObjectResult;
             // Assert
             Assert.Equal(StatusCodes.Status400BadRequest, results.StatusCode);
         }

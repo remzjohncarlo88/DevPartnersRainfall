@@ -44,7 +44,7 @@ namespace DevPartnersRainfall.Controllers
             ServiceResponse<List<RainfallReadingDto>> rain;
 
             // 400
-            if (request.Count == 0)
+            if (request.Count > 0)
             {
                 ErrorModel err = new();
                 List<ErrorDetailModel> errList = new();
@@ -64,7 +64,8 @@ namespace DevPartnersRainfall.Controllers
 
                 }
 
-                return BadRequest(err);
+                if (errList.Count > 0)
+                    return BadRequest(err);
             }
             
             rain = _rainfallService.GetRainfallById(request);
@@ -81,7 +82,7 @@ namespace DevPartnersRainfall.Controllers
                 return StatusCode(500, rain.ErrMessages);
             }
 
-            return Ok(rain);
+            return Ok(rain.Data);
         }
     }
 }

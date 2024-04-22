@@ -8,7 +8,12 @@ namespace DevPartnersRainfall.Models
     [DataContract(Name = "RainfallReading")]
     public class RainfallReadingModel
     {
-        
+        /// <summary>
+        /// Measured
+        /// </summary>
+        [DataMember(Name = "@id")]
+        public string Id { get; set; }
+
         DateTime _date;
         /// <summary>
         /// Date
@@ -25,5 +30,11 @@ namespace DevPartnersRainfall.Models
         /// </summary>
         [DataMember(Name = "value")]
         public decimal AmountMeasured { get; set; }
+
+        /// <summary>
+        /// Measured
+        /// </summary>
+        [DataMember(Name = "measure")]
+        public string Measure { get; set; }
     }
 }
