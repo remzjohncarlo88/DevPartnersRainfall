@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using DevPartnersRainfall.Models;
-using DevPartnersRainfall.DTO;
-using Microsoft.Extensions.Logging;
 
 namespace DevPartnersRainfall.DTO
 {

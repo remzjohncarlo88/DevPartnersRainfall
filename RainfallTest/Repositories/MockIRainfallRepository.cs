@@ -1,13 +1,6 @@
-﻿using DevPartnersRainfall.DTO;
-using DevPartnersRainfall.Models;
+﻿using DevPartnersRainfall.Models;
 using DevPartnersRainfall.Repositories;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RainfallTest.Repositories
 {

@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using DevPartnersRainfall.Models;
+﻿using DevPartnersRainfall.Models;
+using Newtonsoft.Json;
 using System.Net;
 
 namespace DevPartnersRainfall.Repositories

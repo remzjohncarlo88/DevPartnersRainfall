@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace DevPartnersRainfall.Models
+﻿namespace DevPartnersRainfall.Models
 {
     /// <summary>
     /// Error Detail model class

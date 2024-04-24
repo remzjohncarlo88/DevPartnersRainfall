@@ -1,11 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using DevPartnersRainfall.Models;
-using DevPartnersRainfall.Services;
-using Swashbuckle.AspNetCore.Annotations;
-using Newtonsoft.Json.Linq;
 using DevPartnersRainfall.DTO;
+using DevPartnersRainfall.Models;
 using DevPartnersRainfall.ServiceResponder;
-using System.Collections.Generic;
+using DevPartnersRainfall.Services;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace DevPartnersRainfall.Controllers
 {

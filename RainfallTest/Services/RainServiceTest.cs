@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using DevPartnersRainfall.Controllers;
 using DevPartnersRainfall.DTO;
 using DevPartnersRainfall.Models;
-using DevPartnersRainfall.Repositories;
 using DevPartnersRainfall.ServiceResponder;
 using DevPartnersRainfall.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using RainfallTest.Repositories;
 
 namespace RainfallTest.Services

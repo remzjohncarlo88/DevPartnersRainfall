@@ -1,5 +1,4 @@
 ﻿using DevPartnersRainfall.Models;
-using System.Collections;
 
 namespace DevPartnersRainfall.Repositories
 {
