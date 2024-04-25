@@ -1,7 +1,7 @@
 ﻿namespace DevPartnersRainfall.Models
 {
     /// <summary>
-    /// Error model class
+    /// Details of a rainfall reading
     /// </summary>
     public class ErrorModel
     {

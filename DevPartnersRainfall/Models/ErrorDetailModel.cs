@@ -1,7 +1,9 @@
-﻿namespace DevPartnersRainfall.Models
+﻿using System.Runtime.Serialization;
+
+namespace DevPartnersRainfall.Models
 {
     /// <summary>
-    /// Error Detail model class
+    /// Details of invalid request property
     /// </summary>
     public class ErrorDetailModel
     {

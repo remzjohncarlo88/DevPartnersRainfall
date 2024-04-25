@@ -3,7 +3,7 @@
 namespace DevPartnersRainfall.Models
 {
     /// <summary>
-    /// Rain Item Model class
+    /// Details of a rainfall reading
     /// </summary>
     [DataContract(Name = "RainfallReading")]
     public class RainfallReadingModel
@@ -30,11 +30,5 @@ namespace DevPartnersRainfall.Models
         /// </summary>
         [DataMember(Name = "value")]
         public decimal AmountMeasured { get; set; }
-
-        /// <summary>
-        /// Measured
-        /// </summary>
-        [DataMember(Name = "measure")]
-        public string Measure { get; set; } = null!;
     }
 }

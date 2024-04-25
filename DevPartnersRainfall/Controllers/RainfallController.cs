@@ -26,13 +26,13 @@ namespace DevPartnersRainfall.Controllers
         }
 
         /// <summary>
-        /// Gets the list of UK's rainfall readings
+        /// Get rainfall readings by station Id
         /// </summary>
         /// <param name="request">request containing station ID and limit filter number</param>
         /// <returns>List of rainfall readings</returns>
         [HttpGet(Name = "GetRainfallReadingsById")]
         [Produces("application/json")]
-        [SwaggerOperation(Summary = "Get the Rainfall reading data by station id.")]
+        [SwaggerOperation(OperationId = "get-rainfall", Description = "Retrieve the latest readings for the specified stationId", Summary = "Get the Rainfall reading data by station id")]
         [SwaggerResponse(200, "A list of rainfall readings successfully retrieved", typeof(RainfallReadingResponseModel))]
         [SwaggerResponse(400, "Invalid request", typeof(ErrorModel))]
         [SwaggerResponse(404, "No readings found for the specified stationId", typeof(ErrorModel))]

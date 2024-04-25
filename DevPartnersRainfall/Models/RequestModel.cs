@@ -11,13 +11,13 @@ namespace DevPartnersRainfall.Models
     public class RequestModel
     {
         /// <summary>
-        /// Rainfall Id
+        /// The id of the reading station
         /// </summary>
         [Description("The id of the reading station")]
         [Required]
         public string StationId { get; set; } = null!;
         /// <summary>
-        /// Display Count
+        /// The number of readings to return
         /// </summary>
         [Description("The number of readings to return")]
         [DefaultValue(10)]
