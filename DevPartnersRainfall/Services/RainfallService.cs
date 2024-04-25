@@ -65,7 +65,7 @@ namespace DevPartnersRainfall.Services
                 err.Message = Convert.ToString(ex.Message);
 
                 _response.Success = false;
-                _response.Data = null;
+                _response.Data = [];
                 _response.Message = "Error.";                
                 _response.ErrMessages = err;
             }

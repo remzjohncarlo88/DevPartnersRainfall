@@ -19,14 +19,14 @@ namespace DevPartnersRainfall.ServiceResponder
         /// <summary>
         /// Message
         /// </summary>
-        public string Message { get; set; } = null;
+        public string Message { get; set; } = null!;
         /// <summary>
         /// Error thrown
         /// </summary>
-        public string Error { get; set; } = null;
+        public string Error { get; set; } = null!;
         /// <summary>
         /// Error trace
         /// </summary>
-        public ErrorModel ErrMessages { get; set; } = null;
+        public ErrorModel ErrMessages { get; set; } = null!;
     }
 }

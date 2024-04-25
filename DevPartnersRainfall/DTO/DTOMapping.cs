@@ -14,7 +14,6 @@ namespace DevPartnersRainfall.DTO
         public DTOMapping()
         {
             CreateMap<RainfallReadingModel, RainfallReadingDto>().ReverseMap();
-            CreateMap<RainfallReadingResponseModel, RainfallReadingResponseDto>().ReverseMap();
         }        
     }
 }

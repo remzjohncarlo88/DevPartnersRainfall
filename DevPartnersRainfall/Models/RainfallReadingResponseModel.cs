@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace DevPartnersRainfall.Models
 {
@@ -12,6 +13,6 @@ namespace DevPartnersRainfall.Models
         /// List of rain readings
         /// </summary>
         [DataMember(Name = "items")]
-        public List<RainfallReadingModel> Items { get; set; }
+        public List<RainfallReadingModel> Items { get; set; } = [];
     }
 }

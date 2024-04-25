@@ -1,5 +1,6 @@
 ﻿using DevPartnersRainfall.Models;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net;
 
 namespace DevPartnersRainfall.Repositories
@@ -16,16 +17,18 @@ namespace DevPartnersRainfall.Repositories
         /// <returns>List of rainfall readings</returns>
         public async Task<List<RainfallReadingModel>> GetRainfallById(RequestModel request)
         {
-            RainfallReadingResponseModel rainfallList = new RainfallReadingResponseModel();
+            RainfallReadingResponseModel rainfallList = new();
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(string.Concat("http://environment.data.gov.uk/flood-monitoring/id/stations/", request.StationId, "/readings?_sorted&_limit=", request.Count)))
+                using (HttpResponseMessage response = await httpClient.GetAsync(string.Concat("http://environment.data.gov.uk/flood-monitoring/id/stations/", request.StationId, "/readings?_sorted&_limit=", request.Count)))
                 {
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        rainfallList = JsonConvert.DeserializeObject<RainfallReadingResponseModel>(apiResponse);
+                        string apiResponse = (string)await response.Content.ReadAsStringAsync();
+                        var _rainfallList = JsonConvert.DeserializeObject<RainfallReadingResponseModel>(apiResponse);
+
+                        rainfallList = _rainfallList ?? new RainfallReadingResponseModel();
                     }
                 }
             }

@@ -12,7 +12,7 @@ namespace DevPartnersRainfall.Models
         /// Measured
         /// </summary>
         [DataMember(Name = "@id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = null!;
 
         DateTime _date;
         /// <summary>
@@ -35,6 +35,6 @@ namespace DevPartnersRainfall.Models
         /// Measured
         /// </summary>
         [DataMember(Name = "measure")]
-        public string Measure { get; set; }
+        public string Measure { get; set; } = null!;
     }
 }

@@ -15,7 +15,7 @@ namespace DevPartnersRainfall.Models
         /// </summary>
         [Description("The id of the reading station")]
         [Required]
-        public string? StationId { get; set; }
+        public string StationId { get; set; } = null!;
         /// <summary>
         /// Display Count
         /// </summary>

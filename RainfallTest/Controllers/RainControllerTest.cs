@@ -29,11 +29,13 @@ namespace RainfallTest.Controllers
         [Fact]
         public void GetCorrectStationID_WhenCalled_ReturnsRightItem()
         {
-            RequestModel request = new RequestModel();
-            request.StationId = "3680";
-            request.Count = 11;
+            var request = new RequestModel
+            {
+                StationId = "3680",
+                Count = 11
+            };
             // Act
-            var results = _controller.GetRainfallReadingsById(request) as OkObjectResult;
+            var results = (OkObjectResult)_controller.GetRainfallReadingsById(request);
             // Assert
             var itemsEq = Assert.IsType<List<RainfallReadingDto>>(results.Value);
             Assert.Equal(11, itemsEq.Count);
@@ -45,11 +47,13 @@ namespace RainfallTest.Controllers
         [Fact]
         public void GetIncorrectStationID_WhenCalled_ReturnsEmpty()
         {
-            RequestModel request = new RequestModel();
-            request.StationId = "368054015465606548";
-            request.Count = 11;
+            var request = new RequestModel
+            {
+                StationId = "368054015465606548",
+                Count = 11
+            };
             // Act
-            var results = _controller.GetRainfallReadingsById(request) as ObjectResult;
+            var results = (ObjectResult)_controller.GetRainfallReadingsById(request);
             // Assert
             Assert.Equal(StatusCodes.Status404NotFound, results.StatusCode);
         }
@@ -60,11 +64,13 @@ namespace RainfallTest.Controllers
         [Fact]
         public void GetEmptyStationID_WhenCalled_ReturnsEmpty()
         {
-            RequestModel request = new RequestModel();
-            request.StationId = "";
-            request.Count = 11;
+            var request = new RequestModel
+            {
+                StationId = "",
+                Count = 11
+            };
             // Act
-            var results = _controller.GetRainfallReadingsById(request) as ObjectResult;
+            var results = (ObjectResult)_controller.GetRainfallReadingsById(request);
             // Assert
             Assert.Equal(StatusCodes.Status400BadRequest, results.StatusCode);
         }
