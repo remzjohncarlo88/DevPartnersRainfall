@@ -21,6 +21,7 @@ namespace DevPartnersRainfall.Models
         /// </summary>
         [Description("The number of readings to return")]
         [DefaultValue(10)]
+        [Range(1, 100)]
         public int Count { get; set; }
     }
 }
